@@ -21,7 +21,7 @@ window.onload = function() {
         } else if (this.orientation.value == "none") {
             asexual = true;
             this.orien.value = "asexual"
-        }
+        } else {this.orien.value = "straight"}
         console.log(homo)
         console.log(bi)
         console.log(asexual)
