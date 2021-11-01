@@ -1,19 +1,110 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Simple Feedback Form</title>
-<style>label{display:block;}</style>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title>OMR Citizenship</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="mail.js"></script>
+  </head>
+  <body>
+    <h1>ONE MAN REGION CITIZENSHIP APPLICATION</h1>
+    <p>One Man Region is a region founded by Makto Maktavish, the autocratic leader of Mackiland, after becoming a president. She created the region in order to live like a hermit in peace and avoid all kind of interaction with the international world. Just like she lived before becoming a president.</p>
+    <p>However, some nations might be able to join the region if they really really want to.</p>
+    <p>To try to join the region, you must fill out this form.</p>
+    <p>Makto Maktavish won't let you in the region, but she won't tell you "no" if you ask for filling out the application.</p>
+    <p>The Left Hand of Mackilnad might let you in though. Don't lose your hopeless hope!</p>
+    <br><br>
+    <form id="application-form" action="submitted.html">
+      <fieldset>
+        <legend>Personal Information</legend><br>
+          <label class="input_label" for="name"> Full Name: </label>
+          <input class="input" type="text" id="name" name="name" required><br>
+          <label class="input_label" for="name"> Email: </label>
+          <input class="input" type="email" id="email" name="email" required><br>
+          
+          <label for="gender">Your genitalia type:</label><br>
+          <input type="radio" id="m" name="gender" value="male" required>
+          <label for="m"> Penis </label><br>
+          <input type="radio" id="f" name="gender" value="female">
+          <label for="f"> Vagina </label><br>
+          <input type="radio" id="h" name="gender" value="hermaphrodite">
+          <label for="h"> Both </label><br><br>
+          <p id="gayy"></p>
 
-    <form method='post' action='index.php'>
-        Email: <input name='email' type='text' /><br />
-        Subject: <input name='subject' type='text' /><br />
-        Message:<br />
-        <textarea name='message' rows='15' cols='40'>
-        </textarea><br />
-        <input type='submit' />
-      </form>
+          <label for="orientation">What kind of genitalia is your genitalia attracted to?</label><br>
+          <input type="radio" id="p" name="orientation" value="p" required>
+          <label for="p"> Penis </label><br>
+          <input type="radio" id="v" name="orientation" value="v">
+          <label for="v"> Vagina </label><br>
+          <input type="radio" id="bi" name="orientation" value="bi">
+          <label for="bi"> Both </label><br>
+          <input type="radio" id="none" name="orientation" value="none">
+          <label for="none"> None </label><br><br>
+          <input type="hidden" name="orien">
 
-</body>
+          <label for="age">Your age:</label>
+          <input class="input" type="text" id="age" name="age" required><br>
+
+          <label for="zodiac">Your zodiac sign:</label>
+          <select name="zodiac" id="zodiac" required>
+            <option value="aries">Aries</option>
+            <option value="gemini">Gemini</option>
+            <option value="taurus">Taurus</option>
+            <option value="cancer">Cancer</option>
+            <option value="leo">Leo</option>
+            <option value="virgo">Virgo</option>
+            <option value="libra">Libra</option>
+            <option value="scorpio">Scorpio</option>
+            <option value="sagittarius">Sagittarius</option>
+            <option value="capricorn">Capricorn</option>
+            <option value="aquarius">Aquarius</option>
+            <option value="pisces">Pisces</option>
+          </select>
+
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend id="nationInfo">Nation Information</legend><br>
+        <label class="input_label" for="nation_name"> Nation that wants to join the region: </label>
+          <input class="input" type="text" id="nation_name" name="nation_name" required><br>
+          <label for="key">Is it really yours?</label>
+          <p>Go <a href="https://www.nationstates.net/page=verify_login" target="_blank">here</a> and paste the key:</p>
+          <input type="text" id="key" name="key" required>
+          <a href="#nationInfo"onClick="validate()" >Validate</a>
+          <p id="valid_result"></p>
+          <input type="hidden" name="validSuccess">
+        </fieldset>
+        <fieldset>
+          <legend>Questions</legend>
+
+            <p id="q1">1. Why do you want to join the region?</p>
+            <textarea name="why_join" required></textarea>
+
+            <p id="q2">2. How did you hear about the region?</p>
+            <textarea name="hear_from" required></textarea>
+
+            <p id="q3">3. What do you know about Makto Maktavish? <a href="https://www.nationstates.net/page=dispatch/id=1605699" target="_blank"><i>(quick link to her biography)</i></a></p>
+            <textarea name="makto" required></textarea>
+
+            <p id="q4">4. One Man Region is a region for one character with an identity and any number of identitiless characters, would you give up your nation's identity for the region?</p>
+            <input type="radio" id="yes" name="identity" value="yes" required>
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="identity" value="no">
+            <label for="no">No</label><br>
+
+            <p id="q5">5. If you are allowed to join, which position/role would you like to have in the region?</p>
+            <input type="radio" id="loser" name="role" value="loser" required>
+            <label for="loser">Loser  </label><abbr title="Losers are just losers. They are free but don't know what to do and they just waste time.">(?)</abbr><br>
+            <input type="radio" id="slave" name="role" value="slave">
+            <label for="slave">Slave  </label><abbr title="Slaves lack freedom. But unlike losers they are not idiots. They are really useful in Mackiland.">(?)</abbr><br>
+            <input type="radio" id="lover" name="role" value="lover">
+            <label for="lover">Lover  </label><abbr title="Lover is a lover of Makto Maktavish. Someone she dates and has sex with. Keep in mind that you might not be given this role even if you choose it. You will have to fill out another application if you choose this role. Lover doesn't have to give up his identity.">(?)</abbr><br>
+            
+
+        </fieldset>
+        <br>
+        <input type="submit" value="SUBMIT">
+    </form> 
+  </body>
 </html>
