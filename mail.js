@@ -2,6 +2,7 @@ valSuccess = false;
 homo = false;
 bi = false;
 asexual = false;
+straight = true;
 
 emailjs.init("user_zDwr9wlrxHhUuUmH3Hfa6");
 
@@ -12,16 +13,23 @@ window.onload = function() {
         
         if((this.orientation.value == "p" && this.gender.value == "male") || (this.orientation.value == "v" && this.gender.value == "female")) {
             homo = true;
+            straight = false;
             this.orien.value = "homosexual"
         
         } else if (this.orientation.value == "bi") {
 
             bi = true;
+            straight = false;
             this.orien.value = "bisexual"
         } else if (this.orientation.value == "none") {
             asexual = true;
+            straight = false;
             this.orien.value = "asexual"
-        } else {this.orien.value = "straight"}
+        } 
+        if(straight) {
+            straight = true;
+            this.orien.value = "straight";
+        }
         console.log(homo)
         console.log(bi)
         console.log(asexual)
